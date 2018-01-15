@@ -37,7 +37,7 @@ RSpec.describe "authentication" do
         ]
       }
       expect(response.parsed_body).to eq(expected)
-      expect(response.headers["WWW-Authenticate"]).to eq('Basic realm="Application"')
+      expect(response.headers["WWW-Authenticate"]).to eq('Basic realm="Application", Token realm="Application"')
     end
 
     def encode_credentials(user, password)
@@ -82,7 +82,7 @@ RSpec.describe "authentication" do
         ]
       }
       expect(response.parsed_body).to eq(expected)
-      expect(response.headers["WWW-Authenticate"]).to eq('Basic realm="Application"')
+      expect(response.headers["WWW-Authenticate"]).to eq('Basic realm="Application", Token realm="Application"')
     end
   end
 end
