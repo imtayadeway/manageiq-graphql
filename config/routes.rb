@@ -4,4 +4,8 @@ end
 
 Rails.application.routes.draw do
   mount ManageIQ::GraphQL::Engine, :at => '/graphql'
+
+  if Rails.env.development?
+    get "/graphql/explorer", :to => "graphql_explorer#index"
+  end
 end

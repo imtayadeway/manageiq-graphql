@@ -29,6 +29,27 @@ module ManageIQ
         app.config.assets.paths << root.join("node_modules").to_s
       end
 
+      if Rails.env.development?
+        initializer "plugin" do
+          Menu::CustomLoader.register(
+            Menu::Section.new(
+              :graphql_explorer,
+              N_("GraphQL"),
+              'fa fa-lightbulb-o',
+              [
+                Menu::Item.new(
+                  'graphql_explorer',
+                  N_('Explorer'),
+                  'product',
+                  {:feature => 'product'},
+                  '/graphql/explorer'
+                )
+              ]
+            )
+          )
+        end
+      end
+
       def vmdb_plugin?
         true
       end
